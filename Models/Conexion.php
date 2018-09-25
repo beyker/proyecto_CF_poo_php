@@ -16,10 +16,7 @@ error_reporting(E_ALL);
 			"pass"=>"123456",
 			"db"=>"proyecto"
 			);
-
 			private $con;
-
-
 
 			//metodos
 			function __construct()
@@ -29,7 +26,6 @@ error_reporting(E_ALL);
 					$this->datos['user'],
 					$this->datos['pass'],
 					$this->datos['db']);
-				
 			}
 
 			public function consultaSimple($sql)
@@ -37,21 +33,12 @@ error_reporting(E_ALL);
 				$this->con->query($sql);
 			}
 
-
 			public function consultaRetorno($sql)
 			{
 				$datos=$this->con->query($sql);
 				return $datos;
 			}
 
-
-
-
-
 		}
-
-
-
-
 
 ?>

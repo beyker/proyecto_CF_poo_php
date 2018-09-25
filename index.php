@@ -11,9 +11,4 @@
 	new Config\Request();
 	require_once "Views/template.php";
 	Config\Enrutador::run(new Config\Request());
-
-//echo 'todo en orden';
-
-
-
 ?>

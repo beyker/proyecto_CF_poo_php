@@ -7,10 +7,11 @@ use Models\Seccion as Seccion;
  */
 class estudiantesController 
 {
-
+	//atributos
 	private $estudiante;
 	private $seccion;
 
+	//metodos
 	public function __construct()
 	{
 		$this->estudiante = new Estudiante();
@@ -27,12 +28,12 @@ class estudiantesController
 	public function agregar()
 	{
 		if(!$_POST){
-		$datos = $this->seccion->listar();
-		return $datos;
+			$datos = $this->seccion->listar();
+			return $datos;
 		}else{
 			$permitidos=array("image/png","imagen/jpeg","imagen/gif","imagen/jpg");
 			$limite=700;
-		if(in_array($_FILES['imagen']['type'], $permitidos) && $_FILES['imagen']['size'] <= $limite * 1024){
+				if(in_array($_FILES['imagen']['type'], $permitidos) && $_FILES['imagen']['size'] <= $limite * 1024){
 					$nombre = date('i-s').$_FILES['imagen']['name'];
 					$ruta = "Views/template/imagenes/avatars/".$nombre;
 					move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta);
@@ -43,12 +44,9 @@ class estudiantesController
 					$this->estudiante->set("id_seccion", $_POST['id_seccion']);
 					$this->estudiante->add();
 					header("Location: ". URL ."estudiantes");
-
-			}
-
+				}
 		}
 	}
-
 
 	public function editar($id)
 	{
@@ -64,7 +62,6 @@ class estudiantesController
 					$this->estudiante->set("id_seccion", $_POST['id_seccion']);
 					$this->estudiante->edit();
 					header("Location: ". URL ."estudiantes");
-
 			}
 	}
 
@@ -72,7 +69,6 @@ class estudiantesController
 	{
 		$datos=$this->seccion->listar();
 		return $datos;
-
 	}
 
 	public function ver($id)
@@ -80,7 +76,6 @@ class estudiantesController
 		$this->estudiante->set("id", $id);
 		$datos=$this->estudiante->view();
 		return $datos;
-
 	}
 
 	public function eliminar($id)
@@ -88,15 +83,10 @@ class estudiantesController
 		$this->estudiante->set("id", $id);
 		$datos=$this->estudiante->delete();
 		header("Location: ". URL ."estudiantes");
-
-
 	}
-
-
 
 }
 
 $estudiantes = new estudiantesController();
-
 
 ?>

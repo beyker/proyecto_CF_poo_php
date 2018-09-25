@@ -6,9 +6,10 @@ use Models\Seccion as Seccion;
  */
 class seccionesController 
 {
-
+	//atributos
 	private $secciones;
 
+	//metodos
 	public function __construct(){
 		$this->secciones = new Seccion();
 	}
@@ -19,26 +20,17 @@ class seccionesController
 		return $datos;
 	}
 
-
-
 	Public function agregar()
 	{
-
 		if($_POST){
 			$this->secciones->set("nombre", $_POST['nombre']);
 			$this->secciones->add();
 			header("Location: ". URL ."secciones");
 			}
+	}
 
-		}
-
-
-
-
-		public function editar($id)
+	public function editar($id)
 	{
-
-		
 		if(!$_POST){
 					$this->secciones->set("id", $id);
 					$datos=$this->secciones->view();
@@ -48,31 +40,22 @@ class seccionesController
 					$this->secciones->set("nombre", $_POST['nombre']);
 					$this->secciones->edit();
 					header("Location: ". URL ."secciones");
-
 			}
 	}
 
-	
-	
 	public function eliminar($id)
 	{
-
 		$this->secciones->set("id", $id);
 		if($this->secciones->validar()  <= 0){
-			$datos=$this->secciones->delete();
-			header("Location: ". URL ."secciones");
+				$datos=$this->secciones->delete();
+				header("Location: ". URL ."secciones");
 			}else{
 				echo '<script language="javascript">alert("Error no se puede eliminar esta seccion, tiene estudiantes asociados");</script>'; 
-
-
-		}
-
-
+			}
 	}
 
 }
 
 $secciones = new seccionesController();
-
 
 ?>

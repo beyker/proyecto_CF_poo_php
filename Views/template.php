@@ -4,7 +4,7 @@
 
 	class Template{
 
-		public function __construct(){
+	public function __construct(){
 ?>
 	<!DOCTYPE html>
 	<html lang="es">
@@ -45,14 +45,11 @@
 		          </ul>
 		        </li>
 		      </ul>
-		      
-		    
 		    </div>
 		  </div>
 		</nav>
 <?php
 		}
-
 		public function __destruct(){
 ?>
 	<footer class="navbar-fixed-bottom">
@@ -65,7 +62,6 @@
 	</html>
 <?php
 		}
-
 	}
 
 ?>
